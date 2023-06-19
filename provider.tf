@@ -1,12 +1,11 @@
 terraform {
   required_providers {
-    bigip = {
-      source = "F5Networks/bigip"
+    f5 = {
+      source  = "f5devcentral/bigip"
+      version = "~> 1.8"
     }
   }
-  required_version = ">= 0.13"
 }
-
 provider "bigip" {
   address  = var.address
 }
