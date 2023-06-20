@@ -2,14 +2,12 @@ variable "address" {
   type = string
   description = "Address"
 }
-variable "F5_USERNAME" {
-  type = string
-  description = "UserName"
+
+variable "f5_password" {
+  description = "Password for F5"
 }
 
-variable "F5_PASSWORD" {
-  type = string
-  description = "password"
+variable "f5_username" {
+  description = "Password for F5"
 }
-
 
