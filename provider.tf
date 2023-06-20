@@ -8,8 +8,8 @@ terraform {
 }
 
 provider "bigip" {
-  address  = var.address
-  username = var.username
-  password = var.password
+  address  = address
+  username = username
+  password = password
 }
 
