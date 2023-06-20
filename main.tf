@@ -9,7 +9,7 @@ resource "bigip_ltm_snatpool" "snatpool_santiago" {
 }
 
 resource "bigip_ltm_policy" "test-policy-test" {
-  name           = "my_policy-test"
+  name           = "my_policy_test"
   strategy       = "first-match"
   requires       = ["http"]
   published_copy = "Drafts/my_policy"
