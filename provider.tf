@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "bigip" {
-  address  = var.address != "" ? var.address : var.F5_ADDRESS
-  username = var.username != "" ? var.username : var.F5_USERNAME
-  password = var.password != "" ? var.password : var.F5_PASSWORD
+  address  = var.address 
+  username = var.username 
+  password = var.password
 }
