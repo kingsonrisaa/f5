@@ -9,6 +9,6 @@ terraform {
 
 provider "bigip" {
   address  = var.address 
-  username = var.username 
-  password = var.password
+  username = var.f5_username 
+  password = var.f5_password
 }
