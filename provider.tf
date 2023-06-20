@@ -7,3 +7,9 @@ terraform {
   required_version = ">= 0.13"
 }
 
+provider "bigip" {
+  address  = var.address
+  username = var.username
+  password = var.password
+}
+
