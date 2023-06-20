@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+    tools {
+        terraform 'terraform'
+        git 'git'
+    }
+    environment {
+        F5_ADDRESS = '172.16.253.240'
+    }
+    stages {
+        stage('Checkout - GitHub') {
+            steps {
+                git branch: 'main', credentialsId: 'f5-deploy', url: 'https://github.com/kingsonrisaa/f5.git'
+            }
+        }
+        stage('Connecting to F5...') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'f5user-deploy', passwordVariable: 'f5_password', usernameVariable: 'f5_username')]) {
+                    script {
+                        env.F5_USERNAME = "${f5_username}"
+                        env.F5_PASSWORD = "${f5_password}"
+                    }
+                }
+            }
+        }
+        stage('Terraform Init') {
+            steps {
+                sh 'terraform init'
+            }
+        }
+        stage('Terraform Plan') {
+            steps {
+                sh 'terraform plan -var="f5_username=$F5_USERNAME" -var="f5_password=$F5_PASSWORD" -var="address=$F5_ADDRESS"'
+            }
+        }
+        stage('Terraform Apply - Deploy Configuration F5') {
+            steps {
+                sh 'terraform apply -var="f5_username=$F5_USERNAME" -var="f5_password=$F5_PASSWORD" -var="address=$F5_ADDRESS" -auto-approve'
+            }
+        }
+    }
+}
