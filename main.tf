@@ -25,7 +25,5 @@ resource "bigip_ltm_snatpool" "snatpool_santiago" {
 resource "bigip_ltm_pool" "pool_test" {
   name                   = "/Common/pool_test"
   load_balancing_mode    = "least-connections-member"
-  monitors               = [bigip_ltm_monitor.hotel_test]
-
-  
+  monitors               = ["bigip_ltm_monitor.hotel_test"] 
 }
