@@ -14,6 +14,7 @@ resource "bigip_ltm_pool" "pool_test" {
   name                   = "/Common/pool_test"
   load_balancing_mode    = "least-connections-member"
   monitors               = [ bigip_ltm_monitor.hotel_test.name ]
+  
   members = [
     {
       name         = "member1"
@@ -21,4 +22,5 @@ resource "bigip_ltm_pool" "pool_test" {
       port         = 80
       connection_limit = 100
     }
+  ]
 }
