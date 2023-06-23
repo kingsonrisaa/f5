@@ -9,24 +9,14 @@ resource "bigip_ltm_monitor" "hotel_test" {
   parent   = "/Common/https"
   receive =  "HTTP/1.1 200 OK"
 }
-
-
+resource "bigip_ltm_pool_member" "member1" {
+  pool_name  = bigip_ltm_pool.pool_test.name
+  member_name = "member1"
+  address    = "192.168.1.10"
+  port       = 80
+} 
 resource "bigip_ltm_pool" "pool_test" {
   name                   = "/Common/pool_test"
   load_balancing_mode    = "least-connections-member"
   monitors               = [ bigip_ltm_monitor.hotel_test.name ]
-  members = [
-    {
-      name         = "member1"
-      address      = "192.168.1.10"
-      port         = 80
-      connection_limit = 100
-    },
-    {
-      name         = "member2"
-      address      = "192.168.1.11"
-      port         = 80
-      connection_limit = 100
-    }
-  ]
 }
