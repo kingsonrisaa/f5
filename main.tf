@@ -1,12 +1,12 @@
 resource "bigip_ltm_node" "nginx-node1" {
   name    = "/Common/nginx-node1"
   address = "172.16.253.13"
-  monitor = "/Common/http-nginx"
+  monitor = bigip_ltm_monitor.hotel_test.name
 }
 
 resource "bigip_ltm_monitor" "hotel_test" {
   name     = "/Common/hotel_test"
-  parent   = "/Common/https"
+  parent   = "/Common/http"
   receive =  "HTTP/1.1 200 OK"
 }
 resource "bigip_ltm_pool_attachment" "attach-nginx-pool" {
