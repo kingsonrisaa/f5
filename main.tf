@@ -7,7 +7,7 @@ resource "bigip_ltm_monitor" "hotel_test" {
 resource "bigip_ltm_pool" "pool_test" {
   name                   = "/Common/pool_test"
   load_balancing_mode    = "least-connections-member"
-  monitors               = [bigip_ltm_monitor.hotel_test.name]
+  monitors               = ["bigip_ltm_monitor.hotel_test.name"]
 }
 
 resource "bigip_ltm_node" "nginx-node1" {
