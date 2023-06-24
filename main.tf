@@ -16,5 +16,5 @@ resource "bigip_ltm_pool_attachment" "attach-nginx-pool" {
 resource "bigip_ltm_pool" "pool_test" {
   name                   = "/Common/pool_test"
   load_balancing_mode    = "least-connections-member"
-  monitors               = [ "/Common/hotel_test" ]
+  monitors               = "/Common/hotel_test" 
 }
