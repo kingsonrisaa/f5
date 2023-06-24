@@ -4,7 +4,7 @@ resource "bigip_ltm_monitor" "node_monitor" {
   interval = 5
   timeout = 16
   send    = "GET /health-check HTTP/1.0\r\n\r\n"
-  recv    = "HTTP/1.1 200 OK"
+  receive    = "HTTP/1.1 200 OK"
 }
 
 resource "bigip_ltm_node" "nginx-node1" {
