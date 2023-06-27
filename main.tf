@@ -22,8 +22,8 @@ resource "bigip_ltm_pool_attachment" "attach-nginx-pool" {
 }
 
 resource "bigip_snat_pool" "example_snat_pool" {
-  name        = 
-  description = 
+  name        = "nat_test" 
+  description = "nat testing"
   members = [
     "172.17.20.30",
     "172.17.20.312"
