@@ -32,7 +32,7 @@ resource "bigip_virtual_server" "example_vip" {
   destination = "172.16.230.4"
   port        = 443
   protocol    = "TCP"
-  type        = "Perfomance"
-  snat_pool = bigip_snat_pool.example_snat_pool.name
-  pool      = bigip_ltm_pool.pool_test.name
+  type        = "Performance"
+  snat_pool   = bigip_snat_pool.example_snat_pool.name
+  pool        = bigip_ltm_pool.pool_test.name
 }
