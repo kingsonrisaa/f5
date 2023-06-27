@@ -27,11 +27,10 @@ resource "bigip_ltm_snatpool" "snatpool_sanjose" {
 }
 
 resource "bigip_ltm_virtual_server" "example_vip" {
-  name        = "example_vip"
+  name        = "/Common/example_vip"
   description = "VIP_DESCRIPTION"
   destination = "172.16.230.4"
   ip_protocol = "tcp"
-  profiles = ["vip_http_profile", "vip_tcp_profile"]
   source_address_translation = bigip_ltm_snatpool.snatpool_sanjose.name
   port = 443
   pool        = bigip_ltm_pool.pool_test.name
