@@ -30,9 +30,9 @@ resource "bigip_ltm_virtual_server" "example_vip" {
   name        = "example_vip"
   description = "VIP_DESCRIPTION"
   destination = "172.16.230.4"
-  port        = 443
-  protocol    = "TCP"
-  type        = "Performance"
-  snat_pool   = bigip_snat_pool.example_snat_pool.name
+  destination_port = 443
+  ip_protocol = "tcp"
+  profiles = ["vip_http_profile", "vip_tcp_profile"]
+  snat_automap = true
   pool        = bigip_ltm_pool.pool_test.name
 }
