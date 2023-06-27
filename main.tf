@@ -21,11 +21,7 @@ resource "bigip_ltm_pool_attachment" "attach-nginx-pool" {
   node = "${bigip_ltm_node.nginx-node1.name}:80"
 }
 
-resource "bigip_snat_pool" "example_snat_pool" {
-  name        = "nat_test" 
-  description = "nat testing"
-  members = [
-    "172.17.20.30",
-    "172.17.20.312"
-  ]
+resource "bigip_ltm_snatpool" "snatpool_sanjose" {
+  name    = "/Common/snatpool_sanjose"
+  members = ["191.1.1.1", "194.2.2.2"]
 }
