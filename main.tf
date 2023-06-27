@@ -25,3 +25,14 @@ resource "bigip_ltm_snatpool" "snatpool_sanjose" {
   name    = "/Common/snatpool_sanjose"
   members = ["191.1.1.1", "194.2.2.2"]
 }
+
+resource "bigip_virtual_server" "example_vip" {
+  name        = "example_vip"
+  description = "VIP_DESCRIPTION"
+  destination = "172.16.230.4"
+  port        = 443
+  protocol    = "TCP"
+  type        = "Perfomance"
+  snat_pool = bigip_snat_pool.example_snat_pool.name
+  pool      = bigip_ltm_pool.pool_test.name
+}
