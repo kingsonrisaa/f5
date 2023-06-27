@@ -20,3 +20,12 @@ resource "bigip_ltm_pool_attachment" "attach-nginx-pool" {
   pool = bigip_ltm_pool.pool_test.name
   node = "${bigip_ltm_node.nginx-node1.name}:80"
 }
+
+resource "bigip_snat_pool" "example_snat_pool" {
+  name        = 
+  description = 
+  members = [
+    "172.17.20.30",
+    "172.17.20.312"
+  ]
+}
