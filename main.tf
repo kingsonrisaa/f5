@@ -33,5 +33,5 @@ resource "bigip_ltm_virtual_server" "example_vip" {
   ip_protocol = "tcp"
   source_address_translation = "/Common/snatpool_sanjose"
   port = 443
-  pool        = bigip_ltm_pool.pool_test.name
+  pool        = "/Common/pool_test"
 }
