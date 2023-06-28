@@ -22,11 +22,6 @@ resource "bigip_ltm_pool_attachment" "attach-nginx-pool" {
 }
 
 
-resource "bigip_ltm_snatpool" "snatpool_sanjose" {
-  name    = "/Common/snatpool_sanjose"
-  members = ["191.1.1.1", "194.2.2.2"]
-}
-
 resource "bigip_ltm_virtual_server" "example_vip" {
   name        = "/Common/example_vip"
   description = "VIP_DESCRIPTION"
@@ -34,4 +29,10 @@ resource "bigip_ltm_virtual_server" "example_vip" {
   ip_protocol = "tcp"
   port = 443
   pool        = "/Common/pool_test"
+}
+
+
+resource "bigip_ltm_snatpool" "snatpool_sanjose" {
+  name    = "/Common/snatpool_sanjose"
+  members = ["191.1.1.1", "194.2.2.2"]
 }
