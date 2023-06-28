@@ -32,7 +32,7 @@ resource "bigip_ltm_virtual_server" "example_vip" {
 }
 
 
-resource "bigip_ltm_snatpool" "snatpool_sanjose" {
-  name    = "/Common/snatpool_sanjose"
+resource "bigip_ltm_snatpool" "snatpool_sanjosee" {
+  name    = "/Common/snatpool_sanjosee"
   members = ["191.1.1.1", "194.2.2.2"]
 }
