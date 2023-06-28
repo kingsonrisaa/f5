@@ -32,7 +32,6 @@ resource "bigip_ltm_virtual_server" "example_vip" {
   description = "VIP_DESCRIPTION"
   destination = "172.16.230.4"
   ip_protocol = "tcp"
-  source_address_translation = "/Common/snatpool_sanjose"
   port = 443
   pool        = "/Common/pool_test"
 }
