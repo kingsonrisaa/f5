@@ -28,7 +28,6 @@ resource "bigip_ltm_virtual_server" "vs_tc4" {
   destination                = "10.255.255.254"
   description                = "VirtualServer-test"
   port                       = 443
-  profiles                   = ["/Common/tcp", bigip_ltm_profile_http.vs_tc4.name]
   client_profiles            = ["/Common/clientssl"]
   server_profiles            = ["/Common/serverssl"]
   security_log_profiles      = ["/Common/global-network"]
