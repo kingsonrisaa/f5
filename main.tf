@@ -24,6 +24,13 @@ resource "bigip_ltm_node" "nginx-node1" {
   monitor = "/Common/icmp"
 }
 
+resource "bigip_ltm_node" "nginx-node2" {
+  name    = "/Common/nginx-node2"
+  address = "172.16.253.14"
+  monitor = "/Common/icmp"
+}
+
+
 resource "bigip_ltm_virtual_server" "vs_tc4" {
   name                       = "/Common/test_vs_tc4"
   destination                = "10.255.255.254"
