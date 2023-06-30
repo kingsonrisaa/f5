@@ -3,6 +3,7 @@ resource "bigip_ltm_monitor" "hotel_test" {
   name     = "/Common/hotel_test"
   parent   = "/Common/http"
   receive  = "HTTP/1.1 200 OK"
+  send =  "GET /testing/v1/ready HTTP/1.1\r\nConnection: Close\r\nHost: \r\n\r\n"
 }
 
 resource "bigip_ltm_pool" "pool_test" {
