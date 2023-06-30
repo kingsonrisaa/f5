@@ -32,4 +32,7 @@ resource "bigip_ltm_virtual_server" "vs_tc4" {
   server_profiles            = ["/Common/serverssl"]
   security_log_profiles      = ["/Common/global-network"]
   source_address_translation = "automap"
+  profiles = [
+    "/Common/fastL4",
+  ]
 }
